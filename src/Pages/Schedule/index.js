@@ -1,5 +1,11 @@
+import ScheduleModal from "./ScheduleModal";
 const Schedule = () => {
-    return <div>Agendar</div>;
+    return (
+        <div>
+            Agendar
+            <ScheduleModal />
+        </div>
+    );
 };
 
 export default Schedule;

@@ -1,5 +1,11 @@
+import QueryModal from "./QueryModal";
 const Query = () => {
-    return <div>Consultar</div>;
+    return (
+        <div>
+            Consultar
+            <QueryModal />
+        </div>
+    );
 };
 
 export default Query;

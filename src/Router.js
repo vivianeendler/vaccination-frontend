@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import Schedule from "./Pages/Schedule";
-import Query from "./Pages/Query";
+import Home from "./pages/Home";
+import Schedule from "./pages/Schedule";
+import Query from "./pages/Query";
 import Layout from "./components/Layout";
 
 const Router = () => {

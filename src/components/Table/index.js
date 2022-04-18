@@ -1,8 +1,8 @@
-import { Table } from "@mantine/core";
+import { Table, Button } from "@mantine/core";
 
-function TableComponent({ columns = [], rows = [] }) {
+function TableComponent({ columns = [], rows = [], actions = [] }) {
     return (
-        <Table striped>
+        <Table striped highlightOnHover>
             <thead>
                 <tr>
                     {columns.map((column, index) => (
@@ -16,6 +16,20 @@ function TableComponent({ columns = [], rows = [] }) {
                         {columns.map((column, index) => (
                             <td key={index}>{row[column.key]}</td>
                         ))}
+                        <td>
+                            {actions.map(
+                                ({ icon, name, onClick, ...props }, index) => (
+                                    <Button
+                                        leftIcon={icon}
+                                        key={index}
+                                        onClick={() => onClick(row)}
+                                        {...props}
+                                    >
+                                        {name}
+                                    </Button>
+                                ),
+                            )}
+                        </td>
                     </tr>
                 ))}
             </tbody>

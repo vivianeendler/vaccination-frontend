@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { setHours, setMinutes } from "date-fns";
 import { Button } from "@mantine/core";
+
 import DatePickerField from "../DatePickerField";
-import schema from "./validationSchema";
+import schema from "./ValidationSchema";
+import NewSchedule from "../../services/NewSchedule";
+
 import "./styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,26 +20,23 @@ const Basic = () => {
             <Formik
                 validationSchema={schema}
                 initialValues={{
-                    dateTimeOption: "",
+                    scheduledTo: "",
                     name: "",
                     bornDate: "",
                     email: "",
                 }}
-                onSubmit={async (values) => {
-                    await new Promise((r) => setTimeout(r, 500));
-                    alert(JSON.stringify(values, null, 2));
-                }}
+                onSubmit={NewSchedule}
             >
                 {({ errors }) => (
                     <Form className="form-control">
                         <div>
-                            <label htmlFor="dateTimeOption">
+                            <label htmlFor="scheduledTo">
                                 Dia e hora para agendamento
                             </label>
                             <DatePickerField
-                                name="dateTimeOption"
+                                name="scheduledTo"
                                 className="input"
-                                id="dateTimeOption"
+                                id="scheduledTo"
                                 selected={value}
                                 onChange={(date) => setValue(date)}
                                 showTimeSelect
@@ -49,9 +49,9 @@ const Basic = () => {
                                 dateFormat="d, MMMM, yyyy h:mm aa"
                             />
 
-                            {errors.dateTimeOption && (
+                            {errors.scheduledTo && (
                                 <div className="error">
-                                    {errors.dateTimeOption}
+                                    {errors.scheduledTo}
                                 </div>
                             )}
                         </div>

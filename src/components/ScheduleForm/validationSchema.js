@@ -3,7 +3,7 @@ import * as Yup from "yup";
 const schema = Yup.object({
     name: Yup.string().required("O campo Nome é de preenchimento obrigatório."),
     email: Yup.string().email("Favor digitar um e-mail válido."),
-    dateTimeOption: Yup.date()
+    scheduledTo: Yup.date()
         .required(
             "O campo de seleção de Dia e Horário para agendamento é de preenchimento obrigatório.",
         )

@@ -11,7 +11,7 @@ import "./styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Basic = () => {
-    const [value, setValue] = useState(setHours(setMinutes(new Date(), 0), 8));
+    const [value, setValue] = useState(setHours(setMinutes(new Date(), 0), 12));
     const [bornDate, setBornDate] = useState(new Date());
     return (
         <div>
@@ -43,9 +43,20 @@ const Basic = () => {
                                 timeFormat="HH:mm"
                                 minTime={setHours(setMinutes(new Date(), 0), 8)}
                                 maxTime={setHours(
-                                    setMinutes(new Date(), 30),
+                                    setMinutes(new Date(), 0),
                                     17,
                                 )}
+                                excludeTimes={[
+                                    setHours(setMinutes(new Date(), 30), 8),
+                                    setHours(setMinutes(new Date(), 30), 9),
+                                    setHours(setMinutes(new Date(), 30), 10),
+                                    setHours(setMinutes(new Date(), 30), 11),
+                                    setHours(setMinutes(new Date(), 30), 12),
+                                    setHours(setMinutes(new Date(), 30), 13),
+                                    setHours(setMinutes(new Date(), 30), 14),
+                                    setHours(setMinutes(new Date(), 30), 15),
+                                    setHours(setMinutes(new Date(), 30), 16),
+                                ]}
                                 dateFormat="d, MMMM, yyyy h:mm aa"
                             />
 
@@ -89,7 +100,7 @@ const Basic = () => {
                                 name="bornDate"
                                 selected={bornDate}
                                 onChange={(date) => setBornDate(date)}
-                                dateFormat="d, MMMM, yyyy"
+                                dateFormat="dd/MM/yyyy"
                             />
                             {errors.bornDate && (
                                 <div className="error">{errors.bornDate}</div>

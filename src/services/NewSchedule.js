@@ -1,8 +1,13 @@
 import axios from "./api";
+import { addHours } from "date-fns";
 
-const NewSchedule = async (scheduledTo, name, bornDate, email) => {
+const NewSchedule = async (schedule) => {
+    const newSchedule = {
+        ...schedule,
+        scheduledTo: addHours(schedule.scheduledTo, -3),
+    };
     try {
-        await axios.post("/schedule", scheduledTo, name, bornDate, email);
+        await axios.post("/schedule", newSchedule);
     } catch (error) {
         console.log(error);
     }

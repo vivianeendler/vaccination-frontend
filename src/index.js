@@ -3,10 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Router from "./Router";
+import { NotificationsProvider } from "@mantine/notifications";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router />
+        <NotificationsProvider>
+            <Router />
+        </NotificationsProvider>
     </React.StrictMode>,
     document.getElementById("root"),
 );

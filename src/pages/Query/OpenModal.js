@@ -1,4 +1,5 @@
 import { Modal, Textarea, Button, Select } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 
 import axios from "../../services/api";
 import { useState } from "react";
@@ -19,8 +20,21 @@ const QueryModal = ({ opened, toggle, schedule }) => {
         };
         try {
             await axios.put(`/schedule/${_id}`, update);
+            if (localStorage.getItem("rows")) {
+                localStorage.clear();
+            }
+            showNotification({
+                color: "green",
+                message: "Status atualizado com sucesso",
+                title: "Successo",
+            });
         } catch (error) {
             console.log(error);
+            showNotification({
+                color: "red",
+                message: error.response?.data?.message,
+                title: "Erro",
+            });
         }
         toggle();
     };

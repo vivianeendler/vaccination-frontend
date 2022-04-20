@@ -7,6 +7,18 @@ import OpenModal from "./OpenModal";
 import OrderTable from "../../utils/OrderTable";
 
 import axios from "../../services/api";
+async function getResults(rows, setRows) {
+    if (localStorage.getItem("rows")) {
+        setRows(JSON.parse(localStorage.getItem("rows")));
+    } else {
+        try {
+            const { data, status } = await axios.get("/schedules");
+            if (status === 200) return data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 const QueryModal = () => {
     const [value, setValue] = useState(null);
@@ -33,11 +45,22 @@ const QueryModal = () => {
         const selectedDateTime = addHours(value, -3).toISOString();
         return values.scheduledTo === selectedDateTime;
     }
+    const handleGetResults = async () => {
+        setRows(await getResults(rows, setRows));
+    };
+    useEffect(() => {
+        if (localStorage.getItem("rows")) {
+            setRows(JSON.parse(localStorage.getItem("rows")));
+        } else {
+            handleGetResults();
+        }
+    }, []);
 
     useEffect(() => {
-        axios.get("/schedules").then((response) => setRows(response.data));
-    }, []);
+        localStorage.setItem("rows", JSON.stringify(rows));
+    }, [rows]);
     rows.sort(OrderTable);
+
     return (
         <>
             <h1>Consultar agendamentos</h1>

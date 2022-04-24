@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import MainLinks from "./MainLinks";
 import { AppShell, Navbar } from "@mantine/core";
+import MainLinks from "./MainLinks";
 
 const Layout = () => {
     return (

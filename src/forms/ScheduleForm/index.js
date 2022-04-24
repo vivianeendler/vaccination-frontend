@@ -3,14 +3,14 @@ import { Formik, Form, Field } from "formik";
 import { setHours, setMinutes } from "date-fns";
 import { Button } from "@mantine/core";
 
-import DatePickerField from "../DatePickerField";
-import schema from "./ValidationSchema";
+import DatePickerField from "../../components/DatePickerField";
+import ScheduleFormSchema from "../../validations/ScheduleFormSchema";
 import NewSchedule from "../../services/NewSchedule";
 
 import "./styles.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Basic = () => {
+const ScheduleForm = () => {
     const [value, setValue] = useState(setHours(setMinutes(new Date(), 0), 12));
     const [bornDate, setBornDate] = useState(new Date());
     return (
@@ -18,7 +18,7 @@ const Basic = () => {
             <h1>Agendar Horário</h1>
 
             <Formik
-                validationSchema={schema}
+                validationSchema={ScheduleFormSchema}
                 initialValues={{
                     scheduledTo: "",
                     name: "",
@@ -118,4 +118,4 @@ const Basic = () => {
     );
 };
 
-export default Basic;
+export default ScheduleForm;

@@ -1,11 +1,7 @@
-import ScheduleModal from "./ScheduleModal";
+import ScheduleForm from "../../forms/ScheduleForm";
+
 const Schedule = () => {
-    return (
-        <div>
-            Agendar
-            <ScheduleModal />
-        </div>
-    );
+    return <ScheduleForm />;
 };
 
 export default Schedule;

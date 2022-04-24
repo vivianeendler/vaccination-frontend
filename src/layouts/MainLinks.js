@@ -42,7 +42,7 @@ const routes = [
     {
         icon: <Home size={16} />,
         color: "blue",
-        label: "Home",
+        label: "Início",
         path: "/",
     },
     {

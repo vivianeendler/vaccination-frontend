@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const schema = Yup.object({
+const ScheduleFormSchema = Yup.object({
     name: Yup.string().required("O campo Nome é de preenchimento obrigatório."),
     email: Yup.string().email("Favor digitar um e-mail válido."),
     scheduledTo: Yup.date()
@@ -13,4 +13,4 @@ const schema = Yup.object({
         .max(new Date(), "Favor selecionar uma data válida."),
 });
 
-export default schema;
+export default ScheduleFormSchema;
